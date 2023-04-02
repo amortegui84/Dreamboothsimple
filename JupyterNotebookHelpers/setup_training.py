@@ -41,7 +41,7 @@ class SetupTraining:
 
         # Regularization Images
         self.reg_images_select = widgets.Dropdown(
-            options=["man_euler", "man_unsplash", "person_ddim", "woman_ddim", "artstyle"],
+            options=["man_euler", "man_unsplash", "person_ddim", "woman_ddim", "soda_can"],
             value="person_ddim",
             description="Regularization Images: ",
             style=self.style,
@@ -87,12 +87,12 @@ class SetupTraining:
         # Class
         self.class_word_input = widgets.Text(
             value='person',
-            placeholder='man / person / woman / artstyle / etc',
+            placeholder='man / person / woman / can / etc',
             description='Class Word: ',
             style=self.style,
             layout=self.layout,
         )
-        self.build_input_and_label(self.class_word_input, "Typical uses are 'man', 'person', 'woman', or 'artstyle'")
+        self.build_input_and_label(self.class_word_input, "Typical uses are 'man', 'person', 'woman', or 'can'")
 
         # Flip slider
         self.flip_slider = widgets.FloatSlider(
@@ -229,7 +229,7 @@ class SetupTraining:
 
         if not os.path.exists(path_to_reg_images):
             print(f"Downloading regularization images for {dataset}. Please wait...")
-            Repo.clone_from(f"https://github.com/djbielejeski/{repo_name}.git", repo_name,
+            Repo.clone_from(f"https://github.com/amortegui84/{repo_name}.git", repo_name,
                             progress=self.log_git_progress)
 
             print(f"✅ Regularization images for {dataset} downloaded successfully.")
